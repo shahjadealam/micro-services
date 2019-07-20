@@ -1,0 +1,33 @@
+server:
+  port: 2222
+ 
+spring:
+  application:
+    name: Zuul-Api-Gateway
+ 
+eureka:
+  client:
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:1111/eureka/
+  instance:
+    hostname: localhost
+    
+    
+zuul:
+  prefix: /zuul-api
+  routes:
+    Customer-Personal-Info-Service: 
+      path: /personal/**
+      serviceId: Customer-Personal-Info-Service 
+    Customer-Account-Info-Service:
+      path: /account/**
+      service-id: Customer-Account-Info-Service
+  
+  
+  
+  #host:
+   # socket-timeout-millis: 60000
+      
+  
+
